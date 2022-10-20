@@ -1,11 +1,11 @@
-import Opera
+import Vectores
 
 
 class Ortogonal:
 
     def __init__(self, vector):
-        self.vector = self.MatrizBidimensional(len(vector), len(vector[0]))
-        self.vectorOrto = self.MatrizBidimensional(len(vector), len(vector[0]))
+        self.vector = self.matrizBidimensional(len(vector), len(vector[0]))
+        self.vectorOrto = self.matrizBidimensional(len(vector), len(vector[0]))
         self.num = 0
         self.den = 0
         self.proyecta = []
@@ -18,13 +18,13 @@ class Ortogonal:
                 self.vector[i][j] = vector[i][j]
                 self.vectorOrto[i][j] = vector[i][j]
 
-    def MatrizUnidimensional(self, filas):
+    def matrizUnidimensional(self, filas):
         matriz = []
         for i in range(filas):
             matriz.append([])
         return matriz
 
-    def MatrizBidimensional(self, filas, columnas):
+    def matrizBidimensional(self, filas, columnas):
         matriz = []
         for i in range(filas):
             matriz.append([])
@@ -36,17 +36,17 @@ class Ortogonal:
         return self.vectorOrto
 
     def proyeccion(self, u, v, stop):
-        objAux = self.MatrizUnidimensional(len(v))
+        objAux = self.matrizUnidimensional(len(v))
         for i in range(len(objAux)):
             objAux[i] = 0
         aux = []
         for i in range(stop):
-            num = Opera.productoPunto(u[i], v)
-            den = Opera.productoPunto(u[i], u[i])
+            num = Vectores.productoPunto(u[i], v)
+            den = Vectores.productoPunto(u[i], u[i])
             num /= den
             aux.append(-1.0 * num)
-            Aux = Opera.productoEscalar(num, u[i])
-            objAux = Opera.SumVec(Aux, objAux)
+            Aux = Vectores.productoEscalar(num, u[i])
+            objAux = Vectores.suma(Aux, objAux)
         self.proyecta.append(aux)
 
         return objAux
@@ -54,7 +54,7 @@ class Ortogonal:
     def ejecutar(self):
         for i in range(1, len(self.vector)):
             proyAux = self.proyeccion(self.vectorOrto, self.vector[i], i)
-            proyAux2 = Opera.RestaVec(self.vector[i], proyAux)
+            proyAux2 = Vectores.resta(self.vector[i], proyAux)
             self.vectorOrto[i] = proyAux2
 
     def getProyecta(self):

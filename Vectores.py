@@ -1,13 +1,15 @@
-def MatrizUnidimensional(filas):
+# Operaciones aplicadas para los vectores
+
+
+def matrizUnidimensional(filas):
     matriz = []
     for i in range(filas):
         matriz.append([])
     return matriz
 
 
-def SumVec(v, u):
-    result = 0
-    lst = MatrizUnidimensional(len(u))
+def suma(v, u):
+    lst = matrizUnidimensional(len(u))
     for i in range(len(u)):
         result = v[i] + u[i]
         lst[i] = result
@@ -15,8 +17,8 @@ def SumVec(v, u):
     return lst
 
 
-def RestaVec(v, u):
-    lst = MatrizUnidimensional(len(u))
+def resta(v, u):
+    lst = matrizUnidimensional(len(u))
 
     for i in range(len(u)):
         result = v[i] - u[i]
@@ -35,7 +37,7 @@ def productoPunto(u, v):
 
 
 def productoEscalar(escalar, u):
-    lst = MatrizUnidimensional(len(u))
+    lst = matrizUnidimensional(len(u))
 
     for i in range(len(u)):
         result = u[i] * escalar

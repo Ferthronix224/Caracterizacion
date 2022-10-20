@@ -2,6 +2,7 @@ import pandas as pd
 
 
 class Leer:
+    # Clase para leer el archivo csv de dos maneras requeridas para el uso del programa
     def __init__(self, url):
         self.url = url
         self.lista = []
